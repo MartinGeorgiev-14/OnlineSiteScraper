@@ -3,7 +3,7 @@
 ## Set up
 
 ### Install dependencies
-    - Create a virtual enviroment in needed
+    - Create a virtual enviroment if needed
     python -m venv venv
 
     - Install the required libraries
