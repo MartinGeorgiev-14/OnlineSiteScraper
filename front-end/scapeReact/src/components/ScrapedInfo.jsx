@@ -53,6 +53,7 @@ const Content = styled.div`
 `
 
 const ScrapedInfo = ({ data }) => {
+    const content = data.content ? data.content.split("|").filter(el => el != ' ') : [] //[] = null
 
     return (
         <>
@@ -61,19 +62,14 @@ const ScrapedInfo = ({ data }) => {
                     <p>Scraped url: <Span>{data.url}</Span></p>
                     {data.tag ? <p>Tag: <Span>{`<${data.tag}>`}</Span></p> : <p>No tag</p>} 
                     {data.class_ ? <p>Class: <Span>{`.${data.class_}`}</Span></p> : <p>No class</p>}
+                    {content.length > 0 ? <p>Number of elements: <Span>{data.content.length}</Span></p> : null}
                 </Heading>
                 <Content>
                     {data.error ?
-                        <p className="error">{data.error}</p>
-                        :
-                        data.content.split('|').map((el, i) => {
-
-                            if(el != ' '){
-                                return <p key={el + i}>{el}</p>
-                            }
-                            
+                            <p className="error">{data.error}</p>
+                            :
+                            content.map((el, i) => <p key={el + i}>{el}</p>)
                         }
-                    )}
                     
                 </Content>
             </Container>

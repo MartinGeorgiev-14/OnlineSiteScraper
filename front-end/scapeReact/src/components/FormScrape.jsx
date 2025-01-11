@@ -103,12 +103,12 @@ const FormScrape = ({scrapedSites, setScrapedSites }) => {
     const downloadContent = (event) => {
         event.preventDefault(); 
 
-        if(scrapedSites.length <= 0){
+        if(scrapedSites().length <= 0){
             alert("No data to download")
             return;
         }
 
-        const blob = new Blob([JSON.stringify(scrapedSites, null, 2)], {type: 'text/plain'})
+        const blob = new Blob([JSON.stringify(scrapedSites(), null, 2)], {type: 'text/plain'})
 
         const url = URL.createObjectURL(blob)
 
